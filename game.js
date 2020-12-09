@@ -197,11 +197,11 @@ function updateScore() {
 }
 
 function setLocalHighscore(aScore) {
-  if (!sessionStorage["localHighscore"]) {
-    sessionStorage.setItem("localHighscore", aScore);
+  if (!localStorage["localHighscore"]) {
+    localStorage.setItem("localHighscore", aScore);
     newHighscore();
-  } else if (aScore > sessionStorage.getItem("localHighscore")) {
-    sessionStorage.setItem("localHighscore", aScore);
+  } else if (aScore > localStorage.getItem("localHighscore")) {
+    localStorage.setItem("localHighscore", aScore);
     newHighscore();
   } else {
     gameOverText();
@@ -209,12 +209,12 @@ function setLocalHighscore(aScore) {
 }
 
 function checkLocalHighscore() {
-  if (!sessionStorage["localHighscore"]) {
+  if (!localStorage["localHighscore"]) {
     let highScore = 0;
     let hScore = document.getElementById("high-score");
     hScore.innerHTML = `<span class="number">${highScore}</span>`;
   } else {
-    let highScore = sessionStorage.getItem("localHighscore");
+    let highScore = localStorage.getItem("localHighscore");
     let hScore = document.getElementById("high-score");
     hScore.innerHTML = `<span class="number">${highScore}</span>`;
   }
