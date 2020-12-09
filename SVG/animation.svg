@@ -1,0 +1,14 @@
+<svg id="target" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <title>animation</title>
+  <path id="bottomleft" d="M12.5,20H0A20.1,20.1,0,0,0,20,40V27.5A7.6,7.6,0,0,1,12.5,20Z"/>
+  <g id="bottomright">
+    <path d="M27.5,20A7.6,7.6,0,0,1,20,27.5V40A20.1,20.1,0,0,0,40,20Z"/>
+  </g>
+  <g id="topright">
+    <path d="M20,0V12.5A7.6,7.6,0,0,1,27.5,20H40A20.1,20.1,0,0,0,20,0Z"/>
+  </g>
+  <path id="topleft" d="M20,12.5V0A20.1,20.1,0,0,0,0,20H12.5A7.6,7.6,0,0,1,20,12.5Z"/>
+  <g id="inner-circle">
+    <circle cx="20" cy="20" r="7.5"/>
+  </g>
+</svg>

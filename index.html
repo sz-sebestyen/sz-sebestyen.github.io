@@ -2,45 +2,51 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Egy szuper oldal</title>
+	<title>Javascript Game</title>
+	<meta charset="UTF-8">
+	<link rel="icon" href="./SVG/logo.svg">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css">
+	<script src="game.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/pages/products.html">Products</a></li>
-        <li><a href="/pages/orders.html">Orders</a></li>
-        <li><a href="/about.html">About</a></li>
-    </ul>
+	<div class="ui">
+		<button id="start-button">Start</button>
+		<div id="rem-time"><span class="number">0</span></div>
+		<div>
+			Score:
+			<p id="current-score"><span class="number">0</span></p>
+		</div>
+		<div>
+			High score:
+			<p id="high-score"><span class="number">0</span></p>
+		</div>
+	</div>
+	<div class="board">
+		<div id="countdown"></div>
 
+		<svg id="target" class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+			<g id="circle">
+				<circle cx="20" cy="20" r="20" />
+			</g>
+		</svg>
 
-    <h1>Fantastic Burgers</h1>
-    <ul>
-        <li>Meat Lover</li>
-        <li>Vegetarian</li>
-        <li>Piedone</li>
-    </ul>
-    <h2>Additions</h2>
-    <ol>
-        <li>Tomato</li>
-        <li>Apple</li>
-        <li>Chili</li>
-    </ol>
-
-    <a href="https://www.pixilart.com/draw">
-        Pixil Art
-    </a>
-
-    <a href="pages/orders.html">orders</a>
-
-    <a target="blank" href="https://www.google.com">
-        <img width="56" src="img/hawaii-hamburger.jpg" alt="hawaii-hamburger">
-    </a>
-
-    <h2 id="content">content</h2>
-
+		<svg id="death-animation" class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+			<g id="death-all">
+				<path id="bottomleft" d="M12.5,20H0A20.1,20.1,0,0,0,20,40V27.5A7.6,7.6,0,0,1,12.5,20Z" />
+				<path id="bottomright" d="M27.5,20A7.6,7.6,0,0,1,20,27.5V40A20.1,20.1,0,0,0,40,20Z" />
+				<path id="topright" d="M20,0V12.5A7.6,7.6,0,0,1,27.5,20H40A20.1,20.1,0,0,0,20,0Z" />
+				<path id="topleft" d="M20,12.5V0A20.1,20.1,0,0,0,0,20H12.5A7.6,7.6,0,0,1,20,12.5Z" />
+				<circle id="inner-circle" cx="20" cy="20" r="7.5" />
+			</g>
+		</svg>
+		<p id="high-score-text" class="dissapear">New High Score</p>
+		<p id="high-score-number" class="dissapear"></p>
+		<p id="game-over-text" class="dissapear">GAME OVER</p>
+	</div>
 </body>
 
 </html>

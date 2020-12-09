@@ -1,0 +1,309 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  font-size: 16px;
+  cursor: url(../1x/cursor2.png), auto;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 30px;
+  max-width: 760px;
+  font-family: "Comfortaa", cursive;
+  font-weight: 400;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+#countdown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 999;
+  text-align: center;
+  font-size: 2em;
+  color: black;
+}
+
+#countdown span {
+  font-size: 3em;
+}
+
+.ui {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
+  row-gap: 30px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #fff;
+}
+
+.ui button#start-button {
+  height: 100px;
+  background-color: #fff;
+  border: none;
+  border-left: 10px solid black;
+  text-align: left;
+  font-size: 1.7em;
+  font-family: "Comfortaa", cursive;
+  font-weight: 400;
+  padding-left: 30px;
+  outline: none;
+}
+
+.ui button#start-button:disabled {
+  border-color: #555;
+}
+
+.ui button#start-button::first-letter {
+  text-decoration: underline;
+}
+
+.ui button#start-button:hover {
+  cursor: pointer;
+}
+
+.ui div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100px;
+  font-size: 1.4em;
+}
+
+.ui div p {
+  font-size: 1.6em;
+}
+
+.ui div#rem-time {
+  font-size: 6em;
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
+.ui button#start-button,
+.ui div {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+}
+
+@media only screen and (min-width: 600px) {
+  .ui button#start-button,
+  .ui div {
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+  }
+}
+
+span.number {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+}
+
+.board {
+  position: relative;
+  -ms-flex-preferred-size: 700px;
+      flex-basis: 700px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  background-color: #fff;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  background-image: url(../SVG/background.svg);
+  background-size: 175%;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .board {
+    -ms-flex-preferred-size: calc(100vh - 190px);
+        flex-basis: calc(100vh - 190px);
+  }
+}
+
+.dissapear {
+  display: none;
+}
+
+.activeHs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: black;
+}
+
+.activeHs2 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 3em;
+  color: black;
+}
+
+.hidden {
+  z-index: -99;
+}
+
+svg#target {
+  position: absolute;
+  -webkit-transition: top 400ms ease-out, left 400ms ease-out, height 400ms ease-out;
+  transition: top 400ms ease-out, left 400ms ease-out, height 400ms ease-out;
+}
+
+svg#death-animation {
+  position: absolute;
+  -webkit-transition: top 400ms ease-out, left 400ms ease-out, height 400ms ease-out;
+  transition: top 400ms ease-out, left 400ms ease-out, height 400ms ease-out;
+}
+
+svg#death-animation #death-all {
+  transform-box: fill-box;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+svg#death-animation #death-all path,
+svg#death-animation #death-all circle {
+  transform-box: fill-box;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: fill 400ms ease-out;
+  transition: fill 400ms ease-out;
+}
+
+.svg-animated {
+  -webkit-animation: svg-ani 2000ms;
+          animation: svg-ani 2000ms;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.svg-animated path,
+.svg-animated circle {
+  -webkit-animation: path-ani 2000ms;
+          animation: path-ani 2000ms;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.svg-animated-reverse {
+  -webkit-animation: svg-ani 1000ms;
+          animation: svg-ani 1000ms;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  animation-direction: reverse;
+}
+
+.svg-animated-reverse path,
+.svg-animated-reverse circle {
+  -webkit-animation: path-ani 1000ms;
+          animation: path-ani 1000ms;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  animation-direction: reverse;
+}
+
+@-webkit-keyframes svg-ani {
+  from {
+    -webkit-transform: scale(1) rotate(0deg);
+            transform: scale(1) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: scale(3) rotate(395deg);
+            transform: scale(3) rotate(395deg);
+  }
+}
+
+@keyframes svg-ani {
+  from {
+    -webkit-transform: scale(1) rotate(0deg);
+            transform: scale(1) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: scale(3) rotate(395deg);
+            transform: scale(3) rotate(395deg);
+  }
+}
+
+@-webkit-keyframes path-ani {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    fill: black;
+  }
+  50% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    fill: gray;
+  }
+  to {
+    -webkit-transform: translateX(100px);
+            transform: translateX(100px);
+    fill: white;
+  }
+}
+
+@keyframes path-ani {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    fill: black;
+  }
+  50% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    fill: gray;
+  }
+  to {
+    -webkit-transform: translateX(100px);
+            transform: translateX(100px);
+    fill: white;
+  }
+}
+/*# sourceMappingURL=style.css.map */
