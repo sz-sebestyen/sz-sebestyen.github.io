@@ -4,7 +4,7 @@ function _pageLoad() {
   let startButton = document.querySelector("#start-button");
   startButton.addEventListener("click", startCountdown);
 
-  document.addEventListener("keydown", (event) => {
+  document.addEventListener("keydown", function (event) {
     if (
       event.key === "s" &&
       document.getElementById("start-button").disabled == false
@@ -45,7 +45,7 @@ function startCountdown() {
   let countInterval = setInterval(countdownText, 1000);
 
   // négy másodperc múlva leállítja
-  setTimeout(() => {
+  setTimeout(function () {
     clearInterval(countInterval);
     countdown.classList.add("dissapear");
   }, 4000);
@@ -111,7 +111,7 @@ function showTarget() {
   ani.classList.remove("hidden");
   ani.classList.add("svg-animated-reverse");
 
-  setTimeout(() => {
+  setTimeout(function () {
     svg.classList.remove("hidden");
     ani.classList.add("hidden");
     ani.classList.remove("svg-animated-reverse");
@@ -179,7 +179,7 @@ function updateTarget() {
   // prevent capture during updating location
   const target = document.getElementById("circle");
   target.removeEventListener("mouseover", updateTarget);
-  setTimeout(() => {
+  setTimeout(function () {
     target.addEventListener("mouseover", updateTarget);
   }, 300);
 
@@ -266,7 +266,7 @@ function gameOver() {
   death.classList.remove("hidden");
   death.classList.add("svg-animated");
 
-  setTimeout(() => {
+  setTimeout(function () {
     death.classList.add("hidden");
     death.classList.remove("svg-animated");
   }, 2000);
