@@ -1,3 +1,5 @@
+"use strict";
+
 function _pageLoad() {
   let startButton = document.querySelector("#start-button");
   startButton.addEventListener("click", startCountdown);
