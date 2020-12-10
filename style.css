@@ -21,7 +21,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 30px;
-  max-width: 760px;
+  max-width: 660px;
   font-family: "Comfortaa", cursive;
   font-weight: 400;
   padding: 30px;
@@ -131,8 +131,8 @@ span.number {
 
 .board {
   position: relative;
-  -ms-flex-preferred-size: 700px;
-      flex-basis: 700px;
+  -ms-flex-preferred-size: 600px;
+      flex-basis: 600px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
   -webkit-box-flex: 0;

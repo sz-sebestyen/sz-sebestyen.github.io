@@ -17,41 +17,26 @@ function _pageLoad() {
 }
 window.addEventListener("load", _pageLoad);
 
-// no need for these
-//let count;
-//let countInterval;
-
 function startCountdown() {
   document.getElementById("start-button").disabled = true;
   setTimeout(startGame, 4000);
 
   let count = 3;
 
-  // a függvény látja a count áltozót
   function countdownText() {
     let countdown = document.getElementById("countdown");
     countdown.innerHTML = `Game starts in <br><span class="number">${count}</span> ..`;
     countdown.classList.remove("dissapear");
     count--;
-
-    /* another solution in line 42, no global variable needed
-    if (count === -1) {
-      clearInterval(countInterval);
-      countdown.classList.add("dissapear");
-    }
-    */
   }
 
   let countInterval = setInterval(countdownText, 1000);
 
-  // négy másodperc múlva leállítja
   setTimeout(function () {
     clearInterval(countInterval);
     countdown.classList.add("dissapear");
   }, 4000);
 
-  // don't delete, I don't know why this helps with
-  // the first appearance of the svg to not be in the corner
   const svg = document.getElementById("target");
   svg.setAttribute("height", 50);
   svg.classList.remove("hidden");
@@ -65,29 +50,19 @@ function startCountdown() {
 }
 
 function startGame() {
-  console.log("started game");
-  //startTimer();
   showTarget();
   timerInterval();
   scoreReset();
 }
 
-// no need for these
-//let timeLeft;
-//let myInterval;
-
 function timerInterval() {
   let timeLeft = 10;
 
-  // a függvény látja a timeLeft változót
   function startTimer() {
-    //start countdown, if run out of time -> gameover
     if (timeLeft > 0) {
       let remTime = document.getElementById("rem-time");
       timeLeft--;
       remTime.innerHTML = `<span class="number">${timeLeft}</span>`;
-      console.log("started timer");
-      //game over
       if (timeLeft === 0) {
         gameOver();
       }
@@ -95,16 +70,12 @@ function timerInterval() {
   }
 
   let myInterval = setInterval(startTimer, 1000);
-
-  // 10 másodperc múlva állítsa le
   setTimeout(function () {
     clearInterval(myInterval);
   }, 10000);
 }
 
 function showTarget() {
-  console.log("show target");
-
   const svg = document.getElementById("target");
 
   const ani = document.getElementById("death-animation");
@@ -125,14 +96,11 @@ function showTarget() {
 }
 
 function changeTargetLocation() {
-  console.log("change target location");
-
   const board = document.querySelector(".board");
   const svg = document.getElementById("target");
 
   const inset = parseFloat(svg.getAttribute("height"));
 
-  // add a minimum distance of 200px
   const oldTop = parseFloat(svg.style.top);
   const oldLeft = parseFloat(svg.style.left);
 
@@ -143,13 +111,12 @@ function changeTargetLocation() {
     newLeft = roundToTwo(Math.random() * (board.offsetWidth - inset));
   } while (
     oldLeft !== NaN &&
-    Math.pow(oldTop - newTop, 2) + Math.pow(oldLeft - newLeft, 2) < 40000 // 200px
+    Math.pow(oldTop - newTop, 2) + Math.pow(oldLeft - newLeft, 2) < 40000
   );
 
   svg.style.top = newTop;
   svg.style.left = newLeft;
 
-  // fit animation
   const death = document.getElementById("death-animation");
   death.style.top = svg.style.top;
   death.style.left = svg.style.left;
@@ -168,15 +135,11 @@ function changeTargetSize() {
     roundToTwo(parseFloat(svg.getAttribute("height")) * multipicator)
   );
 
-  // fit animation
   const death = document.getElementById("death-animation");
   death.setAttribute("height", parseFloat(svg.getAttribute("height")));
 }
 
 function updateTarget() {
-  console.log("update target");
-
-  // prevent capture during updating location
   const target = document.getElementById("circle");
   target.removeEventListener("mouseover", updateTarget);
   setTimeout(function () {
@@ -188,8 +151,6 @@ function updateTarget() {
 }
 
 function updateScore() {
-  //maybe highscore also here idk
-  console.log("update score");
   let currentScore = document.getElementById("current-score");
 
   let aScore = parseInt(
@@ -253,8 +214,6 @@ function gameOverText() {
 }
 
 function gameOver() {
-  console.log("game over");
-
   const target = document.getElementById("circle");
   target.removeEventListener("mouseover", updateTarget);
   target.removeEventListener("touchstart", updateTarget); // for mobile
