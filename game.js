@@ -38,7 +38,7 @@ function startCountdown() {
   }, 4000);
 
   const svg = document.getElementById("target");
-  svg.setAttribute("height", 50);
+  svg.setAttribute("height", 40);
   svg.classList.remove("hidden");
   svg.classList.add("hidden");
   const death = document.getElementById("death-animation");
